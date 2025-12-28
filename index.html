@@ -190,7 +190,6 @@
             75% { transform: translateX(10px); }
         }
 
-        /* Hero Section */
         .hero {
             position: relative;
             background: linear-gradient(180deg, var(--black) 0%, var(--darker-black) 100%);
@@ -353,7 +352,7 @@
         }
 
         .container {
-            max-width: 1400px;
+            max-width: 1600px;
             margin: 0 auto;
             padding: 80px 20px;
             position: relative;
@@ -596,16 +595,17 @@
             z-index: 1;
         }
 
+        /* 4 items per row - FIXED GRID */
         .resources-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(380px, 1fr));
-            gap: 40px;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 25px;
             margin-bottom: 80px;
         }
 
         .resource-card {
             background: var(--light-black);
-            border-radius: 24px;
+            border-radius: 20px;
             overflow: hidden;
             border: 1px solid rgba(255, 0, 0, 0.2);
             transition: all 0.5s cubic-bezier(0.34, 1.56, 0.64, 1);
@@ -613,16 +613,16 @@
         }
 
         .resource-card:hover {
-            transform: translateY(-15px);
+            transform: translateY(-12px);
             border-color: rgba(255, 0, 0, 0.6);
             box-shadow: 
-                0 30px 80px rgba(0, 0, 0, 0.8),
-                0 0 100px rgba(255, 0, 0, 0.4);
+                0 25px 60px rgba(0, 0, 0, 0.8),
+                0 0 80px rgba(255, 0, 0, 0.4);
         }
 
         .resource-thumbnail {
             width: 100%;
-            height: 280px;
+            height: 240px;
             background: linear-gradient(135deg, var(--black), var(--darker-black));
             display: flex;
             align-items: center;
@@ -644,7 +644,22 @@
             background: radial-gradient(circle at center, rgba(255, 0, 0, 0.3), transparent);
         }
 
-        .resource-thumbnail img,
+        /* Lazy Load Images */
+        .resource-thumbnail img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            position: absolute;
+            inset: 0;
+            z-index: 0;
+            transition: transform 0.6s ease, opacity 0.3s ease;
+            opacity: 0;
+        }
+
+        .resource-thumbnail img.loaded {
+            opacity: 1;
+        }
+
         .resource-thumbnail video {
             width: 100%;
             height: 100%;
@@ -652,7 +667,12 @@
             position: absolute;
             inset: 0;
             z-index: 0;
-            transition: transform 0.6s ease;
+            transition: transform 0.6s ease, opacity 0.3s ease;
+            opacity: 0;
+        }
+
+        .resource-thumbnail video.loaded {
+            opacity: 1;
         }
 
         .resource-card:hover .resource-thumbnail img,
@@ -663,7 +683,7 @@
         .resource-icon-overlay {
             position: relative;
             z-index: 2;
-            font-size: 5.5em;
+            font-size: 5em;
             filter: drop-shadow(0 15px 30px rgba(255, 0, 0, 0.6));
             transition: all 0.4s ease;
         }
@@ -674,13 +694,13 @@
 
         .resource-type-badge {
             position: absolute;
-            top: 20px;
-            right: 20px;
+            top: 15px;
+            right: 15px;
             background: linear-gradient(135deg, var(--primary-red), var(--dark-red));
             color: var(--white);
-            padding: 10px 26px;
+            padding: 8px 20px;
             border-radius: 50px;
-            font-size: 0.85em;
+            font-size: 0.75em;
             font-weight: 700;
             z-index: 3;
             letter-spacing: 1px;
@@ -694,23 +714,23 @@
         }
 
         .resource-content {
-            padding: 35px;
+            padding: 25px;
         }
 
         .resource-title {
-            font-size: 1.5em;
+            font-size: 1.2em;
             font-weight: 700;
             color: var(--white);
-            margin-bottom: 18px;
+            margin-bottom: 15px;
             line-height: 1.3;
             letter-spacing: -0.5px;
         }
 
         .resource-meta {
             display: flex;
-            gap: 25px;
-            margin-bottom: 25px;
-            font-size: 0.95em;
+            gap: 20px;
+            margin-bottom: 20px;
+            font-size: 0.85em;
             color: var(--gray);
             flex-wrap: wrap;
             font-weight: 500;
@@ -719,21 +739,21 @@
         .action-buttons {
             display: grid;
             grid-template-columns: 1fr 1fr;
-            gap: 15px;
+            gap: 12px;
         }
 
         .download-btn, .preview-btn {
-            padding: 18px;
+            padding: 14px;
             border: none;
-            border-radius: 16px;
+            border-radius: 12px;
             font-weight: 700;
             cursor: pointer;
             transition: all 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
-            font-size: 1.05em;
+            font-size: 0.9em;
             display: flex;
             align-items: center;
             justify-content: center;
-            gap: 10px;
+            gap: 8px;
             letter-spacing: 0.5px;
         }
 
@@ -746,20 +766,20 @@
         .preview-btn:hover {
             background: rgba(255, 0, 0, 0.15);
             border-color: var(--primary-red);
-            transform: translateY(-4px);
-            box-shadow: 0 10px 30px rgba(255, 0, 0, 0.3);
+            transform: translateY(-3px);
+            box-shadow: 0 8px 25px rgba(255, 0, 0, 0.3);
         }
 
         .download-btn {
             background: linear-gradient(135deg, var(--primary-red), var(--dark-red));
             color: var(--white);
             border: 2px solid transparent;
-            box-shadow: 0 10px 30px rgba(255, 0, 0, 0.4);
+            box-shadow: 0 8px 25px rgba(255, 0, 0, 0.4);
         }
 
         .download-btn:hover {
-            transform: translateY(-4px);
-            box-shadow: 0 15px 45px rgba(255, 0, 0, 0.6);
+            transform: translateY(-3px);
+            box-shadow: 0 12px 35px rgba(255, 0, 0, 0.6);
             filter: brightness(1.1);
         }
 
@@ -1015,6 +1035,18 @@
             line-height: 1.8;
         }
 
+        @media (max-width: 1400px) {
+            .resources-grid {
+                grid-template-columns: repeat(3, 1fr);
+            }
+        }
+
+        @media (max-width: 1024px) {
+            .resources-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
         @media (max-width: 768px) {
             .hero h1 { font-size: 3em; }
             .profile-badge { width: 130px; height: 130px; font-size: 3.5em; }
@@ -1030,7 +1062,6 @@
     </style>
 </head>
 <body>
-    <!-- Password Protection Modal -->
     <div class="password-modal" id="passwordModal">
         <div class="password-container">
             <div class="lock-icon">🔒</div>
@@ -1076,14 +1107,14 @@
             <div class="stat-card">
                 <div class="stat-header">
                     <div class="stat-icon">🖼️</div>
-                    <div class="stat-number" id="totalMedia">6</div>
+                    <div class="stat-number" id="totalMedia">40</div>
                 </div>
                 <div class="stat-label">MEDIA FILES</div>
             </div>
             <div class="stat-card">
                 <div class="stat-header">
                     <div class="stat-icon">👁️</div>
-                    <div class="stat-number" id="totalDownloads">1.1K</div>
+                    <div class="stat-number" id="totalDownloads">6.8K</div>
                 </div>
                 <div class="stat-label">TOTAL VIEWS</div>
             </div>
@@ -1139,7 +1170,6 @@
         const CORRECT_PASSWORD = '1221';
         let isAuthenticated = false;
 
-        // Check password on page load
         window.addEventListener('load', () => {
             const savedAuth = sessionStorage.getItem('authenticated');
             if (savedAuth === 'true') {
@@ -1173,7 +1203,6 @@
             document.getElementById('passwordModal').classList.add('hidden');
         }
 
-        // Enter key support
         document.getElementById('passwordInput').addEventListener('keypress', (e) => {
             if (e.key === 'Enter') {
                 checkPassword();
@@ -1181,59 +1210,74 @@
         });
 
         const folders = [
-            {id: 'photos', name: 'My Home Photos', icon: '📷', filesCount: 2},
-            {id: 'videos', name: 'My Videos', icon: '🎥', filesCount: 2},
+            {id: 'personal', name: 'My Personal Photos', icon: '📷', filesCount: 28},
+            {id: 'collage', name: 'My Collage Photos', icon: '📷', filesCount: 5},
+            {id: 'family', name: 'My Family Photos', icon: '📷', filesCount: 5},
+            {id: 'videos', name: 'My Videos', icon: '🎥', filesCount: 10},
             {id: 'documents', name: 'My Documents', icon: '📄', filesCount: 2}
         ];
+        // my Personal photos folder is start
+        const personalPhotos = Array.from({length: 28}, (_, i) => ({
+            id: `ph${i + 1}`,
+            title: `Personal Photo ${i + 1}`,
+            type: 'image',
+            size: "2.5 MB",
+            downloads: 156 + Math.floor(Math.random() * 100),
+            fileUrl: `files/personal photos/${i + 1}.${i === 0 ? 'png' : 'jpg'}`,
+            icon: "🖼️"
+        }));
+        // my Personal photos folder is End
+
+
+
+        // my collage photos folder is start
+         const collagePhotos = Array.from({length: 5}, (_, i) => ({
+            id: `cp${i + 1}`,
+            title: `Collage Photo ${i + 1}`,
+            type: 'image',
+            size: "2.5 MB",
+            downloads: 156 + Math.floor(Math.random() * 100),
+            fileUrl: `files/collage photos/${i + 0}.${i === 0 ? 'png' : 'jpeg'}`,
+            icon: "🖼️"
+        }));
+        // my collage photos folder is end
+
+
+
+
+         // my Family photos folder is start
+        const familyPhotos = Array.from({length: 5}, (_, i) => ({
+            id: `fp${i + 1}`,
+            title: `Family Photo ${i + 1}`,
+            type: 'image',
+            size: "2.5 MB",
+            downloads: 156 + Math.floor(Math.random() * 100),
+            fileUrl: `files/family photos/${i + 1}.${i === 0 ? 'png' : 'jpeg'}`,
+            icon: "🖼️"
+        }));
+        // my Family photos folder is End
+
+
+
+
+
+
+        const VideoResources = Array.from({length: 10}, (_, i) => ({
+            id: `vid${i + 1}`,
+            title: `Personal Video ${i + 1}`,
+            type: 'video',
+            size: "45 MB",
+            downloads: 289 + Math.floor(Math.random() * 100),
+            fileUrl: `files/personal videos/${i + 1}.mp4`,
+            icon: "🎥"
+        }));
 
         const resources = {
             'root': [],
-            
-            'photos': [
-                {id: 'ph1', title: "Personal Photo 1", type: 'image', size: "2.5 MB", downloads: 156, fileUrl: "files/personal photos/1.png", icon: "🖼️"},
-
-                 {id: 'ph2', title: "Personal Photo 2", type: 'image', size: "2.5 MB", downloads: 156, fileUrl: "files/personal photos/2.jpg", icon: "🖼️"},
-
-                  {id: 'ph3', title: "Personal Photo 3", type: 'image', size: "2.5 MB", downloads: 156, fileUrl: "files/personal photos/3.jpg", icon: "🖼️"},
-
-                   {id: 'ph4', title: "Personal Photo 4", type: 'image', size: "2.5 MB", downloads: 156, fileUrl: "files/personal photos/4.jpg", icon: "🖼️"},
-
-                    {id: 'ph5', title: "Personal Photo 5", type: 'image', size: "2.5 MB", downloads: 156, fileUrl: "files/personal photos/5.jpg", icon: "🖼️"},      
-                     {id: 'ph6', title: "Personal Photo 6", type: 'image', size: "2.5 MB", downloads: 156, fileUrl: "files/personal photos/6.jpg", icon: "🖼️"},
-                      {id: 'ph7', title: "Personal Photo 7", type: 'image', size: "2.5 MB", downloads: 156, fileUrl: "files/personal photos/7.jpg", icon: "🖼️"},
-
-                       {id: 'ph8', title: "Personal Photo 8", type: 'image', size: "2.5 MB", downloads: 156, fileUrl: "files/personal photos/8.jpg", icon: "🖼️"},
-
-                        {id: 'ph9', title: "Personal Photo 9", type: 'image', size: "2.5 MB", downloads: 156, fileUrl: "files/personal photos/9.jpg", icon: "🖼️"},
-                         {id: 'ph10', title: "Personal Photo 10", type: 'image', size: "2.5 MB", downloads: 156, fileUrl: "files/personal photos/10.jpg", icon: "🖼️"},
-
-                          {id: 'ph11', title: "Personal Photo 11", type: 'image', size: "2.5 MB", downloads: 156, fileUrl: "files/personal photos/11.jpg", icon: "🖼️"},
-                           {id: 'ph12', title: "Personal Photo 12", type: 'image', size: "2.5 MB", downloads: 156, fileUrl: "files/personal photos/12.jpg", icon: "🖼️"},
-                            {id: 'ph13', title: "Personal Photo 13", type: 'image', size: "2.5 MB", downloads: 156, fileUrl: "files/personal photos/13.jpg", icon: "🖼️"},
-                             {id: 'ph14', title: "Personal Photo 14", type: 'image', size: "2.5 MB", downloads: 156, fileUrl: "files/personal photos/14.jpg", icon: "🖼️"},
-
-                              {id: 'ph15', title: "Personal Photo 15", type: 'image', size: "2.5 MB", downloads: 156, fileUrl: "files/personal photos/15.jpg", icon: "🖼️"},
-
-                               {id: 'ph16', title: "Personal Photo 16", type: 'image', size: "2.5 MB", downloads: 156, fileUrl: "files/personal photos/16.jpg", icon: "🖼️"},
-                                {id: 'ph17', title: "Personal Photo 17", type: 'image', size: "2.5 MB", downloads: 156, fileUrl: "files/personal photos/17.jpg", icon: "🖼️"},
-                                 {id: 'ph18', title: "Personal Photo 18", type: 'image', size: "2.5 MB", downloads: 156, fileUrl: "files/personal photos/18.jpg", icon: "🖼️"},
-
-                                  {id: 'ph19', title: "Personal Photo 19", type: 'image', size: "2.5 MB", downloads: 156, fileUrl: "files/personal photos/19.jpg", icon: "🖼️"},
-                                   {id: 'ph20', title: "Personal Photo 20", type: 'image', size: "2.5 MB", downloads: 156, fileUrl: "files/personal photos/20.jpg", icon: "🖼️"},
-                                    {id: 'ph21', title: "Personal Photo 21", type: 'image', size: "2.5 MB", downloads: 156, fileUrl: "files/personal photos/21.jpg", icon: "🖼️"},
-                                     {id: 'ph22', title: "Personal Photo 22", type: 'image', size: "2.5 MB", downloads: 156, fileUrl: "files/personal photos/22.jpg", icon: "🖼️"},
-                                      {id: 'ph23', title: "Personal Photo 23", type: 'image', size: "2.5 MB", downloads: 156, fileUrl: "files/personal photos/23.jpg", icon: "🖼️"},
-                                       {id: 'ph24', title: "Personal Photo 24", type: 'image', size: "2.5 MB", downloads: 156, fileUrl: "files/personal photos/24.jpg", icon: "🖼️"},
-                                        {id: 'ph25', title: "Personal Photo 25", type: 'image', size: "2.5 MB", downloads: 156, fileUrl: "files/personal photos/25.jpg", icon: "🖼️"},
-                                        
-                                         
-            ],
-
-            'videos': [
-                {id: 'vid1', title: "Personal Video 1", type: 'video', size: "45 MB", downloads: 289, fileUrl: "files/collage video/asad.mp4", icon: "🎥"},
-                {id: 'vid2', title: "Personal Video 2", type: 'video', size: "38 MB", downloads: 245, fileUrl: "files/videos/tour.mp4", icon: "🎥"}
-            ],
-
+            'personal': personalPhotos,
+            'collage': collagePhotos,
+            'family': familyPhotos,
+            'videos': VideoResources,
             'documents': [
                 {id: 'doc1', title: "NTS Sample Paper", type: 'pdf', size: "1.2 MB", downloads: 89, fileUrl: "files/NTS_Sample_Paper.pdf", icon: "📄"},
                 {id: 'doc2', title: "Personal Notes", type: 'txt', size: "2 KB", downloads: 67, fileUrl: "files/mani.txt", icon: "📝"}
@@ -1242,6 +1286,25 @@
 
         let currentFolder = 'root';
         let searchTerm = '';
+
+        const mediaObserver = new IntersectionObserver((entries, observer) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    const media = entry.target;
+                    if (media.tagName === 'IMG') {
+                        media.src = media.dataset.src;
+                    } else if (media.tagName === 'VIDEO') {
+                        media.src = media.dataset.src;
+                        // Load first frame of video
+                        media.load();
+                    }
+                    media.classList.add('loaded');
+                    observer.unobserve(media);
+                }
+            });
+        }, {
+            rootMargin: '50px'
+        });
 
         function displayContent() {
             if (!isAuthenticated) return;
@@ -1266,6 +1329,12 @@
                 displayResources();
             }
             updateBreadcrumb();
+            
+            setTimeout(() => {
+                document.querySelectorAll('img[data-src], video[data-src]').forEach(media => {
+                    mediaObserver.observe(media);
+                });
+            }, 100);
         }
 
         function displayFolders() {
@@ -1292,9 +1361,10 @@
             let thumbnailContent = '';
             
             if (r.type === 'image') {
-                thumbnailContent = `<img src="${r.fileUrl}" alt="${r.title}">`;
+                thumbnailContent = `<img data-src="${r.fileUrl}" alt="${r.title}">`;
             } else if (r.type === 'video') {
-                thumbnailContent = `<video src="${r.fileUrl}"></video>`;
+                // Show video with first frame visible
+                thumbnailContent = `<video data-src="${r.fileUrl}" muted playsinline></video>`;
             } else {
                 thumbnailContent = `<div class="resource-icon-overlay">${r.icon}</div>`;
             }
