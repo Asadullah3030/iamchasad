@@ -7,6 +7,13 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+
+    <link rel="icon" type="image/png" href="/favicon-96x96.png" sizes="96x96" />
+<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+<link rel="shortcut icon" href="/favicon.ico" />
+<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
+<link rel="manifest" href="/site.webmanifest" />
+<link rel="shortcut icon" href="files/personal photos/31.jpg" type="image/x-icon">
     <style>
         * {
             margin: 0;
@@ -1210,34 +1217,34 @@
         });
 
         const folders = [
-            {id: 'personal', name: 'My Personal Photos', icon: '📷', filesCount: 28},
-            {id: 'collage', name: 'My Collage Photos', icon: '📷', filesCount: 5},
-            {id: 'family', name: 'My Family Photos', icon: '📷', filesCount: 5},
+            {id: 'personal', name: 'My Personal Photos', icon: '📽️', filesCount: 36},
+            {id: 'collage', name: 'My Collage Photos', icon: '🖼️', filesCount: 24},
+            {id: 'family', name: 'My Family Photos', icon: '📸', filesCount: 44},
             {id: 'videos', name: 'My Videos', icon: '🎥', filesCount: 10},
             {id: 'documents', name: 'My Documents', icon: '📄', filesCount: 2}
         ];
         // my Personal photos folder is start
-        const personalPhotos = Array.from({length: 28}, (_, i) => ({
+        const personalPhotos = Array.from({length: 36}, (_, i) => ({
             id: `ph${i + 1}`,
             title: `Personal Photo ${i + 1}`,
             type: 'image',
             size: "2.5 MB",
             downloads: 156 + Math.floor(Math.random() * 100),
             fileUrl: `files/personal photos/${i + 1}.${i === 0 ? 'png' : 'jpg'}`,
-            icon: "🖼️"
+            icon: "📽️"
         }));
         // my Personal photos folder is End
 
 
 
         // my collage photos folder is start
-         const collagePhotos = Array.from({length: 5}, (_, i) => ({
+         const collagePhotos = Array.from({length: 24}, (_, i) => ({
             id: `cp${i + 1}`,
             title: `Collage Photo ${i + 1}`,
             type: 'image',
             size: "2.5 MB",
             downloads: 156 + Math.floor(Math.random() * 100),
-            fileUrl: `files/collage photos/${i + 0}.${i === 0 ? 'png' : 'jpeg'}`,
+            fileUrl: `files/collage photos/${i + 1}.${i === 0 ? 'png' : 'jpeg'}`,
             icon: "🖼️"
         }));
         // my collage photos folder is end
@@ -1246,14 +1253,14 @@
 
 
          // my Family photos folder is start
-        const familyPhotos = Array.from({length: 5}, (_, i) => ({
+        const familyPhotos = Array.from({length: 44}, (_, i) => ({
             id: `fp${i + 1}`,
             title: `Family Photo ${i + 1}`,
             type: 'image',
             size: "2.5 MB",
             downloads: 156 + Math.floor(Math.random() * 100),
-            fileUrl: `files/family photos/${i + 1}.${i === 0 ? 'png' : 'jpeg'}`,
-            icon: "🖼️"
+            fileUrl: `files/family photos/${i + 1}.${i === 0 ? 'jpg' : 'jpeg'}`,
+            icon: "📸"
         }));
         // my Family photos folder is End
 
@@ -1280,7 +1287,7 @@
             'videos': VideoResources,
             'documents': [
                 {id: 'doc1', title: "NTS Sample Paper", type: 'pdf', size: "1.2 MB", downloads: 89, fileUrl: "files/NTS_Sample_Paper.pdf", icon: "📄"},
-                {id: 'doc2', title: "Personal Notes", type: 'txt', size: "2 KB", downloads: 67, fileUrl: "files/mani.txt", icon: "📝"}
+                {id: 'doc2', title: "Famous Song For React", type: 'txt', size: "2 KB", downloads: 67, fileUrl: "files/Famous Song.txt", icon: "📝"}
             ]
         };
 
