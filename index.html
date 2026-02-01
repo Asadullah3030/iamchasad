@@ -1217,14 +1217,14 @@
         });
 
         const folders = [
-            {id: 'personal', name: 'My Personal Photos', icon: '📽️', filesCount: 37},
-            {id: 'collage', name: 'My Collage Photos', icon: '🖼️', filesCount: 24},
+            {id: 'personal', name: 'My Personal Photos', icon: '📽️', filesCount: 60},
+            {id: 'collage', name: 'My Collage Photos', icon: '🖼️', filesCount: 27},
             {id: 'family', name: 'My Family Photos', icon: '📸', filesCount: 44},
             {id: 'videos', name: 'My Videos', icon: '🎥', filesCount: 30},
             {id: 'documents', name: 'My Documents', icon: '📄', filesCount: 5}
         ];
         
-        const personalPhotos = Array.from({length: 37}, (_, i) => ({
+        const personalPhotos = Array.from({length: 60}, (_, i) => ({
             id: `ph${i + 1}`,
             title: `Personal Photo ${i + 1}`,
             type: 'image',
@@ -1234,7 +1234,7 @@
             icon: "📽️"
         }));
 
-        const collagePhotos = Array.from({length: 24}, (_, i) => ({
+        const collagePhotos = Array.from({length: 27}, (_, i) => ({
             id: `cp${i + 1}`,
             title: `Collage Photo ${i + 1}`,
             type: 'image',
